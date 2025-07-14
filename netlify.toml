@@ -1,9 +1,0 @@
-[build]
-  # This command always exits 0 immediately (i.e. “no-op”)
-  command = "echo '⛔ skipping build'"
-  # Serve everything from the repo root
-  publish = "."
-
-# Prevent Netlify from auto-injecting any framework‑specific build
-[framework]
-  name = ""
