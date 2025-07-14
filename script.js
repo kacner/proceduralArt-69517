@@ -172,3 +172,28 @@
         }
     }
 })();
+document.addEventListener('DOMContentLoaded', function () {
+    const buttonLink = document.querySelector('.bake72__button');
+
+    if (buttonLink) {
+      buttonLink.addEventListener('mousedown', function () {
+        buttonLink.classList.add('clicked');
+      });
+
+      buttonLink.addEventListener('mouseup', function () {
+        buttonLink.classList.remove('clicked');
+      });
+
+      buttonLink.addEventListener('mouseleave', function () {
+      buttonLink.classList.remove('clicked');
+      });
+      buttonLink.addEventListener('touchstart', function () {
+      buttonLink.classList.add('clicked');
+      });
+
+      buttonLink.addEventListener('touchend', function () {
+      buttonLink.classList.remove('clicked');
+      });
+    }
+  });
+  
