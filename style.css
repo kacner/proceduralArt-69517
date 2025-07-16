@@ -93,6 +93,7 @@ body::after {
 }
 
 .bake72 {
+  position: relative;
   margin: 0 auto; 
   cursor: default;
   perspective: 1200px;
@@ -108,6 +109,7 @@ body::after {
   transform: perspective(1200px)perspective(1200px);
   box-shadow: 0 8px 20px #00000082;
   transition: box-shadow 0.3s ease;
+  z-index: 10;
 }
 
 .bake72:hover{
@@ -264,7 +266,7 @@ body::after {
   padding: 0.5rem 0; /* optional breathing room */
   color: #fff;          /* or whatever contrast you need */
   white-space: nowrap;  /* prevent wrapping */
-  z-index: 1;        /* sit on top */
+  z-index: 0;        /* sit on top */
 }
 
 /* header styling */
@@ -392,6 +394,7 @@ body::after {
 }
 /* Wrapper for title + image */
 .hero-headline {
+  z-index: 1; 
   position: absolute;
   top: 10rem;           /* same vertical offset you want */
   left: 1.5%;          /* align with your header/text */
