@@ -5,6 +5,10 @@
   font-weight: normal;
   font-style: normal;
 }
+:root {
+  --header-height: 4rem;   /* adjust to your design */
+  --header-gap: 1rem;      /* the space you want underneath */
+}
 html {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -77,13 +81,15 @@ body::after {
   z-index: -1;
 }
 .flex-body {
-  position: relative;
+  position: absolute;
   perspective: 1200px;
   justify-content: center;
   align-items: center; /* dont*/
-  min-height: 100vh;
+  min-height: auto;
+  height: auto;
+  width: auto;
   display: flex;
-  width: 100%;
+  top: 10rem;
 }
 
 .bake72 {
@@ -105,9 +111,8 @@ body::after {
 }
 
 .bake72:hover{
-  outline: 2px solid #4f4f4f;
+  outline: 2px dashed #4f4f4f;
   box-shadow: 0 0px 100px rgba(0, 0, 0, 1);
-  /*box-shadow: 0 0px 50px rgba(13, 81, 197, 0.7);*/
 }
 
 .bake72__title {
@@ -201,7 +206,7 @@ body::after {
   background: rgba(0, 0, 0, 0);
   transition: 0.3s ease;
   border-radius: inherit;
-}
+} 
 
 .bake72__button:hover::before {
   background: rgba(255, 255, 255, 0.15);
@@ -267,11 +272,11 @@ body::after {
   position: fixed;      /* anchor it to the viewport */
   top: 0;               /* stick to the very top */
   left: 0;
-  height: 10%;
+  height: var(--header-height);
   width: 100%;          /* span the full width */
   background: #222;     /* dark background */
   color: white;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.5);
   z-index: 1000;        /* stay above other content */
 }
 
@@ -293,7 +298,7 @@ body::after {
 
 .logo-image {
   image-rendering: pixelated;
-  height: 10vh;    /* change this to your desired height */
+  height: 3rem;    /* change this to your desired height */
   width: auto;     /* preserves aspect ratio */
   display: block;  /* prevents inline‐image whitespace issues */
 }
@@ -318,9 +323,9 @@ body::after {
   text-decoration: underline;
 }
 .sub-links {
-  position: sticky;
+  top: calc(var(--header-height) + var(--header-gap));
+ position: sticky;
   background: rgba(255, 255, 255, 0.05);
-  /*padding: 1rem 0;*/
   text-align: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -333,15 +338,15 @@ body::after {
   gap: 1.5rem;
   flex-wrap: wrap;
   padding: 1rem 0; 
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .sub-links-container::before {
   content: "";
   position: absolute;
   inset: 0;                  /* top:0; right:0; bottom:0; left:0; */
   background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(4px);                  /* optional glass‑blur */
-  filter: url(#distort-filter) blur(1px);      /* your SVG displacement + extra blur */
+  backdrop-filter: blur(2px);
+  filter: url('#distort-filter') ; 
   z-index: -1;              /* send it behind the links */
   pointer-events: none;     /* let clicks go through to the anchors */
 }
@@ -350,24 +355,24 @@ body::after {
   color: #eee;
   text-decoration: none;
   font-family: 'Lato', sans-serif;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(51, 51, 51, 1);
   padding: 0.5rem 1rem;
-  border-radius: 4px;
+  border-radius: 5px;
   transition: background 0.2s;
+  border: 2px dashed #3e3e3e;
 }
 
 .sub-links-container a:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(79, 79, 79, 1);
 }
 /* override the default link styles */
 .contact-button {
   display: inline-block;         /* so padding + margin work predictably */
   padding: 0.75rem 1.5rem;       /* bigger click area */
-  background-color: #007BFF;     /* bright blue */
+  background-color: #1184F8;     /* bright blue */
   color: #FFF;                   /* white text */
   font-weight: 600;              /* stand out */
   border-radius: 999px;          /* fully pill-shaped */
-  border: 2px solid #FFF;        /* white outline */
   text-decoration: none;         /* remove underline */
   transition: background 0.2s, transform 0.1s;
 }
@@ -375,12 +380,31 @@ body::after {
 /* hover/focus states */
 .contact-button:hover,
 .contact-button:focus {
-  background-color: #0056b3;     /* darker blue on hover */
+  background-color: #0D51C5;     /* darker blue on hover */
   transform: translateY(-1px);   /* tiny lift */
+  transform: scale(1.04);
 }
 
 /* active (pressed) state */
 .contact-button:active {
   background-color: #004494;
   transform: translateY(0);
+}
+/* Wrapper for title + image */
+.hero-headline {
+  position: absolute;
+  top: 10rem;           /* same vertical offset you want */
+  left: 1.5%;          /* align with your header/text */
+  display: inline-block; /* shrinkwrap around its content */
+}
+
+/* Title itself—no more absolute positioning */
+.hero-headline .massive-title {
+  position: static;    /* reset any previous absolute */
+  margin: 0;
+  font-family: 'GothicByte', sans-serif;
+  font-size: 7.5rem;
+  line-height: 0.9;
+  color: #fff;
+  white-space: nowrap;
 }

@@ -33,28 +33,30 @@
   </head>
 
   <body>
-<!-- place this just once in your HTML -->
-<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute; width:0; height:0; overflow:hidden;" aria-hidden="true">
-  <filter id="distort-filter">
-    <!-- generate a noise pattern -->
-    <feTurbulence 
-      type="fractalNoise" 
-      baseFrequency="0.02 0.05" 
-      numOctaves="2" 
-      seed="2" 
-      result="turbulence"/>
-    <!-- apply that noise to displace the graphic -->
-    <feDisplacementMap 
-      in="SourceGraphic" 
-      in2="turbulence" 
-      scale="10"        <!-- tweak for more/less distortion -->
-      xChannelSelector="R" 
+
+<svg xmlns="http://www.w3.org/2000/svg"
+     style="position:absolute;width:0;height:0;overflow:hidden;"
+     aria-hidden="true">
+  <filter id="distort-filter"
+          filterUnits="userSpaceOnUse"
+          primitiveUnits="userSpaceOnUse"
+          x="-50%" y="-50%" width="200%" height="200%">
+    <feTurbulence
+      type="turbulence"
+      baseFrequency="0.1 0.1"
+      numOctaves="4"
+      seed="42"
+      result="noise"/>
+    <feDisplacementMap
+      in="SourceGraphic"
+      in2="noise"
+      scale="15"
+      xChannelSelector="R"
       yChannelSelector="G"/>
   </filter>
 </svg>
 
-
-
+  
 <header class="site-header">
   <div class="container">
     <a href="/" class="logo">
@@ -65,7 +67,7 @@
       <a href="#home">Home</a>
       <a href="#projects">Projects</a>
       <a href="#about">About</a>
-      <a href="#contact" class="contact-button">Contact</a>
+      <a href="#contact" class="contact-button">Contact Us</a>
     </nav>
   </div>
 
@@ -80,11 +82,11 @@
   </section>
 </header>
 
-<h1 class="massive-title">Algorithms <br> Become  Art.</h1>
+  <h1 class="massive-title">Algorithms <br> Becomes  Art.</h1>
 
 
     <!-- module -->
-    <div class="flex-body" style="left: 35%; " >
+    <div class="flex-body" style="left: 47%; " >
       <a data-w-id="35a3636a-23c9-af17-0e8c-fe0f8fa08e5b" href="#" class="bake72 w-inline-block">
         <h2 class="bake72__title">ASCII Shader</h2>
         <div class="bake72__image" style="background-image: url('imgaes/jellyfish.png');"></div>
@@ -95,6 +97,28 @@
         </div>
       </a>  
     </div>
+
+        <!-- new adjustable module, to the left -->
+    <div class="flex-body" id="draggable" style="left: 73.5%;">
+      <a data-w-id="35a3636a-23c9-af17-0e8c-fe0f8fa08e5b"
+         href="#"
+         class="bake72 w-inline-block">
+        <h2 class="bake72__title">ASCII Shader</h2>
+        <div class="bake72__image"
+             style="background-image: url('imgaes/jellyfish.png');">
+        </div>
+        <div class="bake72__price">$19.99</div>
+        <p class="bake72__summary">
+          The perfect ASCII shader for your art. Designed in Visual Studio 2022.
+        </p>
+        <div class="bake72__button"
+             onclick="window.location.href='https://google.com/'">
+          <div class="bake72__button__text">Product Details</div>
+        </div>
+      </a>
+    </div>
+
+
 
     <!-- external javascript -->
     <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6874c8251cff1b7c06f4edde" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
